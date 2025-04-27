@@ -3,8 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 
-
-
 interface User {
   _id: string;
   fullName: string;
@@ -39,7 +37,6 @@ const Profile = () => {
         <li><strong>Phone:</strong> {user.phone}</li>
         <li><strong>Address:</strong> {user.address}</li>
         <li><strong>Designation:</strong> {user.designation}</li>
-     
       </ul>
     </div>
   );

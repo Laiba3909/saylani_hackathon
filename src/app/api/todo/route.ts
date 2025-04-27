@@ -7,10 +7,13 @@ export async function POST(req: NextRequest) {
     const { title, description, completed = false } = await req.json();
 
     if (!title) {
-      return NextResponse.json({
-        success: false,
-        message: 'Title is required',
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Title is required',
+        },
+        { status: 400 }
+      );
     }
 
     await connectToDatabase();
@@ -23,17 +26,34 @@ export async function POST(req: NextRequest) {
 
     await newTodo.save();
 
-    return NextResponse.json({
-      success: true,
-      message: 'Todo added successfully',
-      todo: newTodo,
-    }, { status: 201 });
-  } catch (error: any) {
-    console.error(error);
-    return NextResponse.json({
-      success: false,
-      message: error.message || 'Internal Server Error',
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: true,
+        message: 'Todo added successfully',
+        todo: newTodo,
+      },
+      { status: 201 }
+    );
+  } catch (error: unknown) {
+  
+    if (error instanceof Error) {
+      console.error(error);
+      return NextResponse.json(
+        {
+          success: false,
+          message: error.message || 'Internal Server Error',
+        },
+        { status: 500 }
+      );
+    } else {
+      console.error('Unknown error:', error);
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Internal Server Error',
+        },
+        { status: 500 }
+      );
+    }
   }
 }
-

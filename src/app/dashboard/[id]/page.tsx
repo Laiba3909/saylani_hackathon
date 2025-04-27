@@ -8,13 +8,13 @@ import PendingTodos from '../../components/pendingtodo';
 import CompletedTodos from '../../components/completetodo';
 import { useEffect, useState } from 'react';
 import { Todo } from '../../types/todos';
+import { DropResult } from '@hello-pangea/dnd';
 import {
   FiActivity, FiClock, FiUser, FiAward,
   FiBarChart2, FiPlus, FiCheck, FiRefreshCw
 } from 'react-icons/fi';
 
-
-interface User {
+export interface User {
   _id: string;
   fullName: string;
   email: string;
@@ -25,6 +25,17 @@ interface User {
 
 export type TodoStatus = 'pending' | 'in-progress' | 'completed';
 export type TodoPriority = 'low' | 'medium' | 'high';
+
+interface ApiTodo {
+  id?: string;
+  _id?: string;
+  title?: string;
+  task?: string;
+  completed?: boolean;
+  status?: TodoStatus;
+  priority?: TodoPriority;
+  dueDate?: string;
+}
 
 const Dashboard = () => {
   const { id } = useParams<{ id: string }>();
@@ -38,7 +49,7 @@ const Dashboard = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editText, setEditText] = useState('');
- 
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -80,8 +91,8 @@ const Dashboard = () => {
       }
       const todosData = await todosRes.json();
       setTodos(
-        todosData.todos?.map((todo: any) => ({
-          id: todo.id || todo._id,
+        todosData.todos?.map((todo: ApiTodo) => ({
+          id: todo.id || todo._id || '',
           task: todo.title || todo.task || '', 
           completed: todo.completed || todo.status === 'completed',
           status: todo.status || 'pending',
@@ -89,13 +100,14 @@ const Dashboard = () => {
           dueDate: todo.dueDate
         })) || []
       );
-      } catch (err) {
-        console.error('Error fetching todos:', err);
-        setError(err instanceof Error ? err.message : 'Failed to fetch todos');
-      } finally {
-        setLoading(false);
-      }
-      
+    } catch (err) {
+      console.error('Error fetching todos:', err);
+      setError(err instanceof Error ? err.message : 'Failed to fetch todos');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const addNewTodo = async (task: string): Promise<void> => {
     try {
       const response = await fetch('/api/todo', {
@@ -117,9 +129,8 @@ const Dashboard = () => {
         throw new Error(result.message || 'Failed to add todo');
       }
   
-      
       const newTodo: Todo = {
-        id: result.todo._id,  // Map MongoDB _id to id
+        id: result.todo._id,
         task: result.todo.task,
         completed: result.todo.completed,
         status: result.todo.status || 'pending',
@@ -203,7 +214,7 @@ const Dashboard = () => {
     }
   };
 
-  const handleDragEnd = (result: any) => {
+  const handleDragEnd = (result: DropResult) => {
     if (!result.destination) return;
     const items = Array.from(todos);
     const [reorderedItem] = items.splice(result.source.index, 1);
@@ -350,10 +361,10 @@ const Dashboard = () => {
           </>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-8">
-            {section === 'attendance' && <CheckInOut />}
-            {section === 'profile' && user && <Profile user_prop={user} />}
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <div className="lg:col-span-2 space-y-8">
+    {section === 'attendance' && <CheckInOut />}
+    {section === 'profile' && <Profile />} 
             
             {section === 'todo' && (
               <div className="bg-white rounded-xl shadow-sm overflow-hidden">
@@ -392,18 +403,18 @@ const Dashboard = () => {
 
             {section === 'pending' && (
               <PendingTodos
-              todos={pendingTodos}
-              editingId={editingId}
-              editText={editText}
-              onEditChange={setEditText}
-              onSaveEdit={saveEdit}
-              onStartEdit={startEditing}
-              onComplete={completeTodo}
-              onDelete={removeTodo}
-              onDragEnd={handleDragEnd}
-              onUpdate={updateTodo}
-              showHeader={true}
-            />
+                todos={pendingTodos}
+                editingId={editingId}
+                editText={editText}
+                onEditChange={setEditText}
+                onSaveEdit={saveEdit}
+                onStartEdit={startEditing}
+                onComplete={completeTodo}
+                onDelete={removeTodo}
+                onDragEnd={handleDragEnd}
+                onUpdate={updateTodo}
+                showHeader={true}
+              />
             )}
 
             {section === 'complete' && (
@@ -502,6 +513,5 @@ const Dashboard = () => {
     </div>
   );
 };
-}
-export default Dashboard;
 
+export default Dashboard;

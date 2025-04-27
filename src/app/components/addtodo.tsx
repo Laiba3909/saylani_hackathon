@@ -1,12 +1,12 @@
-// addtodo.tsx
 import React, { useState } from 'react';
 import { TodoPriority } from '../types/todos';
 
 interface AddTodoProps {
+  userId: string; 
   onAdd: (task: string, priority: TodoPriority) => Promise<void>;
 }
 
-const AddTodo: React.FC<AddTodoProps> = ({ onAdd }) => {
+const AddTodo: React.FC<AddTodoProps> = ({  onAdd }) => { // also destructure userId
   const [task, setTask] = useState('');
   const [priority, setPriority] = useState<TodoPriority>('medium');
 

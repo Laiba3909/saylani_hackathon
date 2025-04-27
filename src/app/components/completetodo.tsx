@@ -1,6 +1,6 @@
 'use client';
 import { FiTrash2, FiRotateCcw } from 'react-icons/fi';
-import type { Todo } from '../types/todos'; // Using type-only import
+import type { Todo } from '../types/todos';
 
 interface CompletedTodosProps {
   todos: Todo[];
@@ -13,18 +13,14 @@ export default function CompletedTodos({
   todos,
   onDelete,
   onUpdate,
-  showHeader = true
+  showHeader = true,
 }: CompletedTodosProps) {
   const handleRestore = (todo: Todo) => {
     if (onUpdate) {
-      // Explicitly creating a new Todo object with proper typing
       const updatedTodo: Todo = {
-        id: todo.id,
-        task: todo.task,
+        ...todo,
         completed: false,
-        status: 'pending', // This now matches TodoStatus
-        priority: todo.priority,
-        ...(todo.dueDate ? { dueDate: todo.dueDate } : {})
+        status: 'pending',
       };
       onUpdate(updatedTodo);
     }
@@ -40,7 +36,7 @@ export default function CompletedTodos({
           Completed Tasks
         </h2>
       )}
-      
+
       {todos.length === 0 ? (
         <div className="text-center py-6 text-gray-500">
           No completed tasks yet
@@ -48,7 +44,10 @@ export default function CompletedTodos({
       ) : (
         <ul className="space-y-3">
           {todos.map((todo) => (
-            <li key={todo.id} className="group relative bg-gray-50 rounded-lg p-4 shadow-sm flex items-center justify-between">
+            <li
+              key={todo.id}
+              className="group relative bg-gray-50 rounded-lg p-4 shadow-sm flex items-center justify-between"
+            >
               <span className="flex-1 text-gray-500 line-through">{todo.task}</span>
               <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 {onUpdate && (
@@ -60,7 +59,7 @@ export default function CompletedTodos({
                     <FiRotateCcw size={18} />
                   </button>
                 )}
-                <button 
+                <button
                   onClick={() => onDelete(todo.id)}
                   className="p-1 text-red-500 hover:text-red-700"
                   title="Delete"

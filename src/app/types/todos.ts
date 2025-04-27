@@ -9,4 +9,3 @@ export interface Todo {
   priority: TodoPriority;
   dueDate?: string;
 }
-

@@ -17,7 +17,7 @@ export default function Home() {
               <span className="text-blue-600">Made Simple</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10">
-            WorkFlow Pro is an easy and powerful task manager for everyone — whether it's for office work or personal tasks.
+            WorkFlow Pro is an easy and powerful task manager for everyone — whether it&apos;s for office work or personal tasks.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
               <Link
@@ -145,7 +145,7 @@ export default function Home() {
         Built for everyone
       </h2>
       <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-        WorkFlow Pro adapts to your needs — whether you're managing tasks, personal projects, or running your own business.
+        WorkFlow Pro adapts to your needs — whether you&apos;re managing tasks, personal projects, or running your own business.
       </p>
     </div>
 
@@ -224,40 +224,40 @@ export default function Home() {
     <div className="grid md:grid-cols-3 gap-8">
       {[
         {
-          quote: "Task Manager has made it easy for me to keep track of my personal goals and tasks, improving my productivity by 30%.",
-          name: "Sarah Johnson",
-          title: "Student",
-          image: "https://randomuser.me/api/portraits/women/44.jpg",
+          quote: "&quot;Task Manager has made it easy for me to keep track of my personal goals and tasks, improving my productivity by 30%.&quot",
+          name: "&quot;Sarah Johnson&quot",
+          title: "&quot;Student&quot",
+          image: "&quot;https://randomuser.me/api/portraits/women/44.jpg&quot",
         },
         {
-          quote: "As a freelancer, I can now manage multiple projects at once, with reminders and deadlines that keep me on track.",
-          name: "Michael Chen",
-          title: "Freelancer, Designer",
-          image: "https://randomuser.me/api/portraits/men/32.jpg",
+          quote: "&quot;As a freelancer, I can now manage multiple projects at once, with reminders and deadlines that keep me on track.&quot",
+          name: "&quot;Michael Chen&quot;",
+          title:" &quot;Freelancer, Designer&quot;",
+          image: "&quot;https://randomuser.me/api/portraits/men/32.jpg&quot",
         },
         {
-          quote: "Task Manager helped me organize my daily routine as a busy parent, making it easier to juggle work and family responsibilities.",
-          name: "Emma Rodriguez",
-          title: "Parent, Full-time Worker",
-          image: "https://randomuser.me/api/portraits/women/63.jpg",
+          quote: "&quot;Task Manager helped me organize my daily routine as a busy parent, making it easier to juggle work and family responsibilities.&quot;",
+          name: "&quot;Emma Rodriguez&quot;",
+          title: "&quot;Parent, Full-time Worker&quot;",
+          image: "&quot;https://randomuser.me/api/portraits/women/63.jpg&quot",
         },
         {
-          quote: "It's not just for work! Task Manager has been amazing for organizing everything from fitness goals to family events.",
-          name: "John Doe",
-          title: "Health Enthusiast",
-          image: "https://randomuser.me/api/portraits/men/24.jpg",
+          quote: "&quot;It&apos;s not just for work! Task Manager has been amazing for organizing everything from fitness goals to family events.&quot",
+          name: "&quot;John Doe&quot",
+          title: "&quot;Health Enthusiast&quot",
+          image: "&quot;https://randomuser.me/api/portraits/men/24.jpg&quot",
         },
         {
-          quote: "Managing my personal finances and career goals became much simpler with Task Manager. Highly recommended!",
-          name: "Linda Scott",
-          title: "Young Professional",
-          image: "https://randomuser.me/api/portraits/women/12.jpg",
+          quote:" &quot;Managing my personal finances and career goals became much simpler with Task Manager. Highly recommended!&quot",
+          name: "&quot;Linda Scott&quot",
+          title: "&quot;Young Professional&quot",
+          image:" &quot;https://randomuser.me/api/portraits/women/12.jpg&quot",
         },
         {
-          quote: "I can now manage my studies, part-time job, and social life with ease, thanks to Task Manager.",
-          name: "Jake Williams",
-          title: "College Student",
-          image: "https://randomuser.me/api/portraits/men/45.jpg",
+          quote:" &quot;I can now manage my studies, part-time job, and social life with ease, thanks to Task Manager.&quot",
+          name: "&quot;Jake Williams&quot",
+          title: "&quot;College Student&quot",
+          image: "&quot;https://randomuser.me/api/portraits/men/45.jpg&quot",
         }
       ].map((testimonial, index) => (
         <div key={index} className="bg-white p-8 rounded-xl shadow-lg">
@@ -266,7 +266,7 @@ export default function Home() {
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
             </svg>
           </div>
-          <p className="text-gray-700 mb-6 italic">"{testimonial.quote}"</p>
+          <p className="text-gray-700 mb-6 italic">&quot;{testimonial.quote}&quot;</p>
           <div className="flex items-center">
             <Image
               src={testimonial.image}

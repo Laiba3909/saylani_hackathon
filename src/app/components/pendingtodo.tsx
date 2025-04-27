@@ -1,20 +1,24 @@
 'use client';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 import { FiCheck, FiTrash2, FiEdit2 } from 'react-icons/fi';
 import { BsGripVertical } from 'react-icons/bs';
 import { Todo } from '../types/todos';
 
-interface ActiveTodosProps {
+export interface ActiveTodosProps {
   todos: Todo[];
   editingId: string | null;
   editText: string;
-  onEditChange: (text: string) => void;
+  onEditChange: React.Dispatch<React.SetStateAction<string>>;
   onSaveEdit: (id: string) => void;
   onStartEdit: (id: string, text: string) => void;
-  onComplete: (id: string) => void;
   onDelete: (id: string) => void;
-  onDragEnd: (result: { destination: any; source: any }) => void; 
+  onComplete: (id: string) => void;
+  onUpdate: (updatedTodo: Todo) => Promise<void>; 
+  showHeader?: boolean;
+onDragEnd: (result: DropResult) => void;
+  
 }
+
 
 export default function PendingTodos({
   todos,
