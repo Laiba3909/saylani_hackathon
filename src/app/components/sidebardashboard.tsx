@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import {FaTasks ,FaHome, FaCalendarCheck, FaUser, FaSignOutAlt, FaClipboardList, FaCheckCircle, FaExclamationCircle , FaTimes,FaBars} from 'react-icons/fa';
+import {FaTasks ,FaHome,  FaUser, FaSignOutAlt, FaClipboardList, FaCheckCircle, FaExclamationCircle , FaTimes,FaBars} from 'react-icons/fa';
 
 interface SidebarProps {
   isOpen: boolean;

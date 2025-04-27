@@ -26,11 +26,22 @@ const Signup = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const payload = new FormData();
-    Object.entries(formData).forEach(([k, v]) => payload.append(k, v as string));
-    if (file) payload.append('profileImage', file);
 
-    const res = await fetch('/api/signup', { method: 'POST', body: payload });
+    // Prepare payload for API
+    const dataToSend = {
+      ...formData,
+      profileImage: file ? file : null // Include file if it exists
+    };
+
+    // Send data as JSON
+    const res = await fetch('/api/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataToSend),
+    });
+
     const data = await res.json();
     if (data.success) router.push('/dashboard');
     else alert(data.message || 'Signup failed');
@@ -38,22 +49,19 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-    
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="w-full max-w-4xl bg-white rounded-xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2"
       >
-        
         <div className="p-8 md:p-10 flex flex-col justify-center">
           <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-blue-600">Welcome to WorkFlow Pro</h2>
+            <h2 className="text-2xl font-bold mb-4 text-blue-600">Welcome to WorkFlow Pro</h2>
             <p className="text-gray-600 mt-2">Join our Task management system</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Profile Picture</label>
               <input
@@ -64,7 +72,6 @@ const Signup = () => {
               />
             </div>
 
-         
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
@@ -91,7 +98,6 @@ const Signup = () => {
               </div>
             </div>
 
-       
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
               <input
@@ -142,7 +148,6 @@ const Signup = () => {
               />
             </div>
 
-        
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -162,9 +167,6 @@ const Signup = () => {
         </div>
 
         <div className="hidden md:block relative bg-gradient-to-br from-blue-600 to-indigo-700">
-        
-        
-
           <Image
             src="/sign.jpg"
             alt="Office workspace"
@@ -172,7 +174,7 @@ const Signup = () => {
             style={{ objectFit: 'cover', opacity: 0.9 }}
           />
 
-              <div className="absolute top-4 right-4">
+          <div className="absolute top-4 right-4">
             <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium text-sm">
               30-Day Free Trial
             </span>

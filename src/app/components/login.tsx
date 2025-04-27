@@ -2,6 +2,7 @@
 import { useState, FormEvent, ChangeEvent, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -55,11 +56,10 @@ const Login: React.FC = () => {
 
   return (
     <div className="flex min-h-screen">
-      
-      <div className="flex-1 flex items-center justify-center ">
+      <div className="flex-1 flex items-center justify-center">
         <form
           onSubmit={handleSubmit}
-          className="max-w-md mx-auto  p-6 bg-white shadow rounded-lg space-y-4 relative"
+          className="max-w-md mx-auto p-6 bg-white shadow rounded-lg space-y-4 relative"
         >
           {errorMessage && (
             <div className="absolute top-[-60px] left-0 w-full bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded shadow">
@@ -90,9 +90,9 @@ const Login: React.FC = () => {
             Login
           </button>
           <p>
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <button className="bg-blue-600 w-44 ml-2 rounded-2xl h-10">
-              <span className=" text-white">
+              <span className="text-white">
                 <Link href={'/Signup'}>Signup now</Link>
               </span>
             </button>
@@ -100,11 +100,12 @@ const Login: React.FC = () => {
         </form>
       </div>
 
-      
-      <div className="flex-1 hidden md:flex -ml-16 items-center justify-center ">
-        <img
-          src="/login.png" 
+      <div className="flex-1 hidden md:flex -ml-16 items-center justify-center">
+        <Image
+          src="/login.png"
           alt="WorkFlow Pro Illustration"
+          width={500}
+          height={500} 
           className="max-w-full h-auto p-10"
         />
       </div>
@@ -113,5 +114,3 @@ const Login: React.FC = () => {
 };
 
 export default Login;
-
-

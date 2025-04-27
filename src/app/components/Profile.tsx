@@ -3,9 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 
-interface ProfileProps {
-  user_prop: User;
-}
 
 
 interface User {
@@ -17,7 +14,7 @@ interface User {
   designation: string;
 }
 
-const Profile = ({user_prop}:ProfileProps) => {
+const Profile = () => {
   const { id } = useParams();
   const [user, setUser] = useState<User | null>(null);
 

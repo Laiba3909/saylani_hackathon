@@ -9,8 +9,8 @@ import CompletedTodos from '../../components/completetodo';
 import { useEffect, useState } from 'react';
 import { Todo } from '../../types/todos';
 import {
-  FiActivity, FiCalendar, FiClock, FiUser, FiAward,
-  FiBarChart2, FiPlus, FiCheck, FiTrash2, FiEdit2, FiRefreshCw
+  FiActivity, FiClock, FiUser, FiAward,
+  FiBarChart2, FiPlus, FiCheck, FiRefreshCw
 } from 'react-icons/fi';
 
 
@@ -38,7 +38,7 @@ const Dashboard = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editText, setEditText] = useState('');
-
+ 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -82,7 +82,7 @@ const Dashboard = () => {
       setTodos(
         todosData.todos?.map((todo: any) => ({
           id: todo.id || todo._id,
-          task: todo.title || todo.task || '', // Make sure to check for title
+          task: todo.title || todo.task || '', 
           completed: todo.completed || todo.status === 'completed',
           status: todo.status || 'pending',
           priority: todo.priority || 'medium',
