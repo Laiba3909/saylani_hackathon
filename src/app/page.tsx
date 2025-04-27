@@ -1,103 +1,316 @@
-import Image from "next/image";
-
+"use client"
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const [viewTab, setviewTab] = useState('personal');
+
+  return (
+    <div className="min-h-screen bg-white">
+    
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+              Modern Task Management <br />
+              <span className="text-blue-600">Made Simple</span>
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10">
+            WorkFlow Pro is an easy and powerful task manager for everyone — whether it's for office work or personal tasks.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+              <Link
+                href="/Signup"
+                className="bg-blue-600 text-white px-8 py-4 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+              >
+                Start Free Trial
+              </Link>
+              <Link
+                href="/features"
+                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-md text-lg font-medium hover:border-blue-600 hover:text-blue-600 transition-colors"
+              >
+                See Features
+              </Link>
+            </div>
+          </div>
+          <div className="mt-16 rounded-xl overflow-hidden shadow-2xl">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80"
+              alt="WorkFlow Pro dashboard"
+              className="w-full h-auto"
+              width={500}
+              height={500}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Trusted By Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-gray-500 mb-12">TRUSTED BY COMPANIES WORLDWIDE</p>
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-8 items-center justify-items-center">
+            {[
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png',
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png',
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/2048px-Microsoft_logo.svg.png',
+              '/meta.png',
+              '/goole.png',
+              '/shopify.png',
+            ].map((logo, index) => (
+              <Image
+                key={index}
+                src={logo}
+                alt="Company logo"
+                className="h-12 object-contain opacity-70 hover:opacity-100 transition-opacity"
+                width={100}
+                height={100}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Powerful features for modern workplaces</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              From employee management to office operations, WorkFlow Pro has the tools you need.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              {
+                icon: (
+                  <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                ),
+                title: 'Employee Management',
+                description: 'Track employee data, attendance, and performance in one centralized platform.',
+              },
+              {
+                icon: (
+                  <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                    />
+                  </svg>
+                ),
+                title: 'Task Automation',
+                description: 'Automate routine office tasks and workflows to save time and reduce errors.',
+              },
+              {
+                icon: (
+                  <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    />
+                  </svg>
+                ),
+                title: 'Analytics Dashboard',
+                description: 'Get real-time insights into your office operations and employee productivity.',
+              },
+            ].map((feature, index) => (
+              <div key={index} className="text-center">
+                <div className="flex justify-center mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tabs Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Built for everyone
+      </h2>
+      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        WorkFlow Pro adapts to your needs — whether you're managing tasks, personal projects, or running your own business.
+      </p>
     </div>
+
+    <div className="mb-12 ">
+      <div className="flex justify-center border-b border-gray-200">
+        {['personal', 'freelance', 'startup', 'creative'].map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setviewTab(tab)}
+            className={`px-2 md:px-6 py-3 font-medium text-sm md:text-base capitalize ${viewTab === tab ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h3 className="text-2xl font-bold text-gray-900 mb-4 capitalize">
+          {viewTab === 'personal' ? 'Personal Projects' :
+           viewTab === 'freelance' ? 'Freelancers' :
+           viewTab === 'startup' ? 'Startups' :
+           viewTab === 'creative' ? 'Creative Minds' :
+           viewTab}
+        </h3>
+        <p className="text-gray-600 mb-3">
+          {{
+            personal: 'Organize your daily tasks, plan events, and stay ahead with smart reminders and efficient workflows.',
+            freelance: 'Manage client work, invoices, projects, and communications in one place — built for freelancers who juggle it all.',
+            startup: 'Perfect for young startups to track projects, manage teams, and grow operations from day one.',
+            creative: 'Capture ideas, manage portfolios, and collaborate on creative projects with ease.',
+          }[viewTab]}
+        </p>
+        <Link
+          href="#"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+        >
+          Learn more about {viewTab === 'personal' ? 'Personal Projects' : viewTab} features
+          <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
+      </div>
+
+      <div className="rounded-xl overflow-hidden shadow-xl">
+        <Image
+          src={
+            {
+              personal: '/personal.png',
+              freelance: '/freelance.avif',
+              startup: '/startup.webp',
+              creative: '/creative.avif',
+            }[viewTab] || 'https://defaultimage.com/default.jpg'
+          }
+          alt={`WorkFlow Pro for ${viewTab}`}
+          className="w-full h-auto"
+          width={300}
+          height={300}
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Trusted by people from all walks of life</h2>
+      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        See how Task Manager is helping individuals manage their tasks effectively across various aspects of life.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-3 gap-8">
+      {[
+        {
+          quote: "Task Manager has made it easy for me to keep track of my personal goals and tasks, improving my productivity by 30%.",
+          name: "Sarah Johnson",
+          title: "Student",
+          image: "https://randomuser.me/api/portraits/women/44.jpg",
+        },
+        {
+          quote: "As a freelancer, I can now manage multiple projects at once, with reminders and deadlines that keep me on track.",
+          name: "Michael Chen",
+          title: "Freelancer, Designer",
+          image: "https://randomuser.me/api/portraits/men/32.jpg",
+        },
+        {
+          quote: "Task Manager helped me organize my daily routine as a busy parent, making it easier to juggle work and family responsibilities.",
+          name: "Emma Rodriguez",
+          title: "Parent, Full-time Worker",
+          image: "https://randomuser.me/api/portraits/women/63.jpg",
+        },
+        {
+          quote: "It's not just for work! Task Manager has been amazing for organizing everything from fitness goals to family events.",
+          name: "John Doe",
+          title: "Health Enthusiast",
+          image: "https://randomuser.me/api/portraits/men/24.jpg",
+        },
+        {
+          quote: "Managing my personal finances and career goals became much simpler with Task Manager. Highly recommended!",
+          name: "Linda Scott",
+          title: "Young Professional",
+          image: "https://randomuser.me/api/portraits/women/12.jpg",
+        },
+        {
+          quote: "I can now manage my studies, part-time job, and social life with ease, thanks to Task Manager.",
+          name: "Jake Williams",
+          title: "College Student",
+          image: "https://randomuser.me/api/portraits/men/45.jpg",
+        }
+      ].map((testimonial, index) => (
+        <div key={index} className="bg-white p-8 rounded-xl shadow-lg">
+          <div className="mb-6">
+            <svg className="w-8 h-8 text-blue-600 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+          </div>
+          <p className="text-gray-700 mb-6 italic">"{testimonial.quote}"</p>
+          <div className="flex items-center">
+            <Image
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-12 h-12 rounded-full mr-4 object-cover"
+              width={200}
+              height={200}
+            />
+            <div>
+              <p className="font-semibold text-gray-900">{testimonial.name}</p>
+              <p className="text-sm text-gray-600">{testimonial.title}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-600 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to transform your office operations?</h2>
+          <p className="text-xl mb-10 opacity-90">
+            Join thousands of companies using WorkFlow Pro to streamline their employee management and office workflows.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href="/Signup"
+              className="bg-white text-blue-600 px-8 py-4 rounded-md text-lg font-medium hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl"
+            >
+              Start 30-Day Free Trial
+            </Link>
+            <Link
+              href="/demo"
+              className="border-2 border-white text-white px-8 py-4 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors"
+            >
+              Request Demo
+            </Link>
+          </div>
+        </div>
+      </section>
+ </div>
+         
   );
 }
+
+
